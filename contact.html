@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Andmi - Brand, Strategy & Growth Consultancy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #FF5A00;
+            --dark-blue: #1A1A2E;
+            --navy: #0F1C2E;
+            --charcoal: #222831;
+            --light-grey: #E9ECEF;
+            --medium-grey: #6C757D;
+            --off-white: #F8F9FA;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-blue);
+            color: var(--off-white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0;
+            position: relative;
+            background-color: var(--navy);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--off-white);
+            font-weight: 500;
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--orange);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--orange);
+        }
+
+        /* Mobile Nav */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--off-white);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--medium-grey);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-dot:hover {
+            transform: scale(1.2);
+        }
+
+        .progress-dot.active {
+            background-color: var(--orange);
+            transform: scale(1.2);
+        }
+
+        .progress-dot .tooltip {
+            position: absolute;
+            right: 25px;
+            top: -5px;
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .progress-dot:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--navy);
+        }
+
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            line-height: 1.1;
+            max-width: 800px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+        }
+
+        .hero p {
+            font-size: 22px;
+            max-width: 650px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            color: var(--light-grey);
+        }
+
+        .geometric-shape {
+            position: absolute;
+            z-index: -1;
+        }
+
+        .shape-1 {
+            top: 10%;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: rgba(255, 90, 0, 0.1);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background-color: var(--charcoal);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--light-grey);
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-method span {
+            font-size: 18px;
+            color: var(--light-grey);
+        }
+
+        .contact-form {
+            background-color: var(--navy);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--medium-grey);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--white);
+            border-radius: 4px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 2px rgba(255, 90, 0, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background-color: var(--orange);
+            color: var(--white);
+            border: 2px solid var(--orange);
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-button:hover {
+            background-color: transparent;
+            color: var(--orange);
+        }
+
+        .mt-30 {
+            margin-top: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-logo span {
+            color: var(--orange);
+        }
+
+        .footer-description {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 400px;
+            color: var(--light-grey);
+        }
+
+        .footer-heading {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: var(--white);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--light-grey);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--medium-grey);
+            font-size: 16px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 60px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--navy);
+                padding: 20px;
+                flex-direction: column;
+                gap: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                z-index: 100;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .contact-container,
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .progress-container {
+                right: 15px;
+            }
+            
+            .progress-dot .tooltip {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .contact-form {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .progress-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-dot" data-page="index.html">
+            <span class="tooltip">Home</span>
+        </div>
+        <div class="progress-dot" data-page="about.html">
+            <span class="tooltip">About</span>
+        </div>
+        <div class="progress-dot" data-page="services.html">
+            <span class="tooltip">Services</span>
+        </div>
+        <div class="progress-dot" data-page="process.html">
+            <span class="tooltip">Process</span>
+        </div>
+        <div class="progress-dot active" data-page="contact.html">
+            <span class="tooltip">Contact</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">&<span>Mi</span></a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="process.html" class="nav-link">Process</a>
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                </div>
+                <button class="mobile-nav-toggle">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Page Content -->
+    <section class="hero">
+        <div class="geometric-shape shape-1"></div>
+        <div class="container">
+            <h1>Get in <span>Touch</span></h1>
+            <p>Ready to transform your brand and accelerate growth? Let's start the conversation.</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Collaborate</h3>
+                    <p>We're excited to learn about your business and discuss how Andmi can help you achieve your goals. Reach out to us using the form or contact details below.</p>
+                    
+                    <div class="contact-method">
+                        <span>Email: andy@andmi.cc</span>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <span>Location: London, United Kingdom</span>
+                    </div>
+                    
+                    <p>We typically respond to inquiries within 24 hours. Looking forward to connecting with you!</p>
+                    
+                    <h3 class="mt-30">What to Expect</h3>
+                    <p>When you reach out to us, we'll schedule an initial consultation to understand your needs and determine how we can best support your business. This conversation is an opportunity for both of us to assess whether we're a good fit for working together.</p>
+                    <p>If we move forward, we'll develop a tailored proposal outlining our recommended approach, timeline, and investment. We believe in transparency and will clearly communicate what you can expect from our partnership.</p>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Tell us about your challenges and what you're looking to achieve</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <a href="index.html" class="footer-logo">&<span>Mi</span></a>
+                    <p class="footer-description">Brand, Strategy & Growth Consultancy. We help businesses build strong brands, develop effective strategies, and achieve sustainable growth.</p>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="process.html">Process</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="footer-heading">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li>andy@andmi.cc</li>
+                        <li>London, United Kingdom</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Andmi. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile nav toggle
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileNavLinks = document.querySelector('.nav-links');
+            
+            mobileNavToggle.addEventListener('click', function() {
+                mobileNavLinks.classList.toggle('active');
+            });
+            
+            // Progress dots navigation
+            const progressDots = document.querySelectorAll('.progress-dot');
+            
+            progressDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const targetPage = this.getAttribute('data-page');
+                    if (targetPage) {
+                        window.location.href = targetPage;
+                    }
+                });
+            });
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const company = document.getElementById('company').value;
+                const message = document.getElementById('message').value;
+                
+                // Here you would typically send the form data to a server
+                // For now, we'll just show an alert
+                alert(`Thank you for your message, ${name} from ${company}! We'll get back to you at ${email} soon.`);
+                
+                // Reset form
+                contactForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>

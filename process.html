@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process | Andmi - Brand, Strategy & Growth Consultancy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #FF5A00;
+            --dark-blue: #1A1A2E;
+            --navy: #0F1C2E;
+            --charcoal: #222831;
+            --light-grey: #E9ECEF;
+            --medium-grey: #6C757D;
+            --off-white: #F8F9FA;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-blue);
+            color: var(--off-white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0;
+            position: relative;
+            background-color: var(--navy);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--off-white);
+            font-weight: 500;
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--orange);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--orange);
+        }
+
+        /* Mobile Nav */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--off-white);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--medium-grey);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-dot:hover {
+            transform: scale(1.2);
+        }
+
+        .progress-dot.active {
+            background-color: var(--orange);
+            transform: scale(1.2);
+        }
+
+        .progress-dot .tooltip {
+            position: absolute;
+            right: 25px;
+            top: -5px;
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .progress-dot:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--navy);
+        }
+
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            line-height: 1.1;
+            max-width: 800px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+        }
+
+        .hero p {
+            font-size: 22px;
+            max-width: 650px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            color: var(--light-grey);
+        }
+
+        .geometric-shape {
+            position: absolute;
+            z-index: -1;
+        }
+
+        .shape-1 {
+            top: 10%;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: rgba(255, 90, 0, 0.1);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 100px 0;
+            background-color: var(--dark-blue);
+        }
+
+        .process-steps {
+            margin-top: 50px;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            min-width: 80px;
+            height: 80px;
+            background-color: var(--orange);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .step-content h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .step-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 800px;
+            color: var(--light-grey);
+        }
+
+        .process-connector {
+            position: absolute;
+            top: 80px;
+            left: 40px;
+            width: 2px;
+            height: calc(100% - 20px);
+            background-color: var(--orange);
+            opacity: 0.3;
+        }
+
+        .section-title {
+            font-size: 42px;
+            margin-bottom: 30px;
+            color: var(--white);
+        }
+
+        .section-title span {
+            color: var(--orange);
+        }
+
+        .text-white {
+            color: var(--white);
+        }
+        
+        .text-orange {
+            color: var(--orange);
+        }
+        
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+
+        .two-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 100px 0;
+            background-color: var(--charcoal);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-logo span {
+            color: var(--orange);
+        }
+
+        .footer-description {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 400px;
+            color: var(--light-grey);
+        }
+
+        .footer-heading {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: var(--white);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--light-grey);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--medium-grey);
+            font-size: 16px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 60px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--navy);
+                padding: 20px;
+                flex-direction: column;
+                gap: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                z-index: 100;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .footer-content,
+            .two-column-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .progress-container {
+                right: 15px;
+            }
+            
+            .progress-dot .tooltip {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .progress-container {
+                display: none;
+            }
+            
+            .process-step {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .process-connector {
+                display: none;
+            }
+            
+            .step-number {
+                min-width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-dot" data-page="index.html">
+            <span class="tooltip">Home</span>
+        </div>
+        <div class="progress-dot" data-page="about.html">
+            <span class="tooltip">About</span>
+        </div>
+        <div class="progress-dot" data-page="services.html">
+            <span class="tooltip">Services</span>
+        </div>
+        <div class="progress-dot active" data-page="process.html">
+            <span class="tooltip">Process</span>
+        </div>
+        <div class="progress-dot" data-page="contact.html">
+            <span class="tooltip">Contact</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">&<span>Mi</span></a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="process.html" class="nav-link active">Process</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                <button class="mobile-nav-toggle">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Process Page Content -->
+    <section class="hero">
+        <div class="geometric-shape shape-1"></div>
+        <div class="container">
+            <h1>Our <span>Process</span></h1>
+            <p>A structured approach to understanding your challenges and creating effective solutions.</p>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">How We <span>Work</span></h2>
+            <p class="text-white mb-30">Our collaborative process ensures we develop strategies that are tailored to your specific needs and goals.</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="process-connector"></div>
+                    <div class="step-content">
+                        <h3>Discovery</h3>
+                        <p>We begin by getting to know you, your business, and your goals. Through in-depth discussions and research, we develop a comprehensive understanding of your current situation, challenges, and opportunities. This discovery phase includes:</p>
+                        <p>- Stakeholder interviews to gather diverse perspectives<br>
+                        - Review of existing documentation and data<br>
+                        - Market and competitor analysis<br>
+                        - Customer research and insights<br>
+                        - Analysis of current brand positioning and strategy</p>
+                        <p>This thorough discovery process ensures that our recommendations are based on a deep understanding of your unique context rather than generic best practices.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="process-connector"></div>
+                    <div class="step-content">
+                        <h3>Analysis</h3>
+                        <p>Using proven theories, models, and tools, we evaluate your market position, internal processes, and growth opportunities. This analysis provides a solid foundation for developing effective strategies. Our analytical approach includes:</p>
+                        <p>- SWOT analysis to identify strengths, weaknesses, opportunities, and threats<br>
+                        - Gap analysis between current and desired states<br>
+                        - Customer journey mapping to identify pain points and opportunities<br>
+                        - Competitive positioning assessment<br>
+                        - Brand architecture and alignment evaluation</p>
+                        <p>We present our findings in clear, accessible formats that make complex information easy to understand and act upon.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="process-connector"></div>
+                    <div class="step-content">
+                        <h3>Strategy Development</h3>
+                        <p>Based on our analysis, we develop custom strategies that align with your brand values and business objectives. These strategies are designed to address your specific challenges and capitalize on identified opportunities. Our strategy development process includes:</p>
+                        <p>- Collaborative workshops to generate and refine ideas<br>
+                        - Prioritization of initiatives based on impact and feasibility<br>
+                        - Development of strategic frameworks and guiding principles<br>
+                        - Creation of measurable objectives and key results (OKRs)<br>
+                        - Definition of target audiences and value propositions</p>
+                        <p>We ensure that the strategies we develop together are both ambitious and achievable, with clear connections to your business goals.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="process-connector"></div>
+                    <div class="step-content">
+                        <h3>Implementation Planning</h3>
+                        <p>We create detailed implementation plans that break down the strategy into actionable steps. This includes timelines, resource allocation, and key performance indicators to measure success. Our implementation planning involves:</p>
+                        <p>- Breaking down strategic initiatives into specific tasks and milestones<br>
+                        - Assigning responsibilities and establishing accountability<br>
+                        - Creating realistic timelines that account for dependencies<br>
+                        - Identifying potential obstacles and developing mitigation strategies<br>
+                        - Establishing measurement frameworks to track progress</p>
+                        <p>This detailed planning ensures that your team has a clear roadmap for turning strategy into action.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Support and Refinement</h3>
+                        <p>We provide ongoing support to help you implement the strategy effectively. Regular reviews allow us to refine the approach based on real-world results, ensuring continuous improvement and sustained growth. Our support includes:</p>
+                        <p>- Regular check-in meetings to review progress and address challenges<br>
+                        - Training and coaching to build internal capabilities<br>
+                        - Data analysis to measure results against objectives<br>
+                        - Strategy refinement based on changing market conditions<br>
+                        - Knowledge transfer to ensure long-term success</p>
+                        <p>Our commitment extends beyond strategy development to ensure that the plans we create together deliver measurable results for your business.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">Our <span>Methods</span></h2>
+            <p class="text-white mb-30">We use a variety of proven methodologies and frameworks to analyze your business and develop effective strategies.</p>
+            
+            <div class="two-column-grid">
+                <div>
+                    <h3 class="text-orange mb-30">Strategic Frameworks</h3>
+                    <p class="text-white mb-30">Our strategic analysis draws on established frameworks such as Porter's Five Forces, PESTEL analysis, and the Business Model Canvas. These tools help us systematically assess your competitive environment, external factors affecting your business, and the components of your business model.</p>
+                    <p class="text-white mb-30">We also employ growth frameworks like the Ansoff Matrix to identify market penetration, market development, product development, and diversification opportunities. These structured approaches ensure comprehensive analysis while allowing for creative strategy development.</p>
+                </div>
+                <div>
+                    <h3 class="text-orange mb-30">Brand & Customer Methodologies</h3>
+                    <p class="text-white mb-30">Our brand development process incorporates methodologies such as brand archetypes, positioning frameworks, and brand essence definition. We use customer journey mapping, persona development, and jobs-to-be-done frameworks to align your brand with customer needs and expectations.</p>
+                    <p class="text-white mb-30">For implementation, we employ agile methodologies that allow for iterative development and testing of strategies. This approach enables us to deliver value quickly while maintaining flexibility to adapt based on real-world feedback and changing market conditions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <a href="index.html" class="footer-logo">&<span>Mi</span></a>
+                    <p class="footer-description">Brand, Strategy & Growth Consultancy. We help businesses build strong brands, develop effective strategies, and achieve sustainable growth.</p>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="process.html">Process</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="footer-heading">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li>andy@andmi.cc</li>
+                        <li>London, United Kingdom</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Andmi. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile nav toggle
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileNavLinks = document.querySelector('.nav-links');
+            
+            mobileNavToggle.addEventListener('click', function() {
+                mobileNavLinks.classList.toggle('active');
+            });
+            
+            // Progress dots navigation
+            const progressDots = document.querySelectorAll('.progress-dot');
+            
+            progressDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const targetPage = this.getAttribute('data-page');
+                    if (targetPage) {
+                        window.location.href = targetPage;
+                    }
+                });
+            });
+            
+            // Animate elements when they come into view
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.process-step');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial styles for animation
+            const elementsToAnimate = document.querySelectorAll('.process-step');
+            elementsToAnimate.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Run animation on scroll
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Run once on load
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>
