@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andmi | Brand, Strategy & Growth Consultancy</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/Andmi/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/Andmi/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/Andmi/favicon-16x16.png">
-    <link rel="manifest" href="/Andmi/site.webmanifest">
+    <title>Andmi | Brand-Led Strategy & Growth Consultancy | Greater China </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --orange: #FF5A00;
+            --orange-light: rgba(255, 90, 0, 0.1);
             --dark-blue: #1A1A2E;
             --navy: #0F1C2E;
             --charcoal: #222831;
@@ -35,12 +32,14 @@
             background-color: var(--dark-blue);
             color: var(--off-white);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
         }
 
         /* Header */
@@ -48,6 +47,7 @@
             padding: 30px 0;
             position: relative;
             background-color: var(--navy);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
@@ -171,16 +171,19 @@
 
         /* Hero Section */
         .hero {
-            padding: 100px 0;
+            padding: 150px 0 100px;
             position: relative;
             overflow: hidden;
             background-color: var(--navy);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .hero-container {
             display: flex;
             flex-direction: column;
             gap: 40px;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -189,23 +192,57 @@
             max-width: 800px;
             margin-bottom: 20px;
             color: var(--white);
+            position: relative;
         }
 
         .hero h1 span {
             color: var(--orange);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 30%;
+            background-color: rgba(255, 90, 0, 0.15);
+            left: -10%;
+            bottom: 0;
+            z-index: -1;
+            border-radius: 4px;
         }
 
         .hero p {
             font-size: 22px;
             max-width: 650px;
             margin-bottom: 40px;
-            line-height: 1.5;
+            line-height: 1.6;
             color: var(--light-grey);
+        }
+
+        .hero p:first-of-type {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero p:first-of-type::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--orange);
+            bottom: -10px;
+            left: 0;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 15px 30px;
+            padding: 16px 32px;
             background-color: var(--orange);
             color: var(--white);
             text-decoration: none;
@@ -214,16 +251,37 @@
             transition: var(--transition);
             font-size: 18px;
             border: 2px solid var(--orange);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 6px 15px rgba(255, 90, 0, 0.2);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            z-index: -1;
+            transition: var(--transition);
         }
 
         .cta-button:hover {
-            background-color: transparent;
             color: var(--orange);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 90, 0, 0.3);
+        }
+
+        .cta-button:hover::before {
+            background-color: var(--white);
         }
 
         .geometric-shape {
             position: absolute;
-            z-index: -1;
+            z-index: 1;
         }
 
         .shape-1 {
@@ -244,20 +302,66 @@
             background-color: rgba(26, 26, 46, 0.3);
         }
 
+        .shape-3 {
+            top: 30%;
+            left: 40%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .shape-4 {
+            top: 60%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255, 255, 255, 0.03);
+            transform: rotate(45deg);
+        }
+
         /* About Section */
         .about-section {
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: var(--dark-blue);
+            position: relative;
+            overflow: hidden;
         }
 
         .section-title {
-            font-size: 42px;
-            margin-bottom: 30px;
+            font-size: 48px;
+            margin-bottom: 40px;
             color: var(--white);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: var(--orange);
+            bottom: -15px;
+            left: 0;
+            border-radius: 2px;
         }
 
         .section-title span {
             color: var(--orange);
+            position: relative;
+        }
+
+        .section-title span::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(255, 90, 0, 0.1);
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            border-radius: 2px;
         }
 
         .about-content {
@@ -265,49 +369,190 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-text {
+            position: relative;
+        }
+
+        .about-text::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            background-color: var(--orange);
+            left: -20px;
+            border-radius: 2px;
+            opacity: 0.7;
         }
 
         .about-text p {
             font-size: 20px;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            line-height: 1.8;
             color: var(--light-grey);
+            position: relative;
+            z-index: 2;
         }
 
-        .about-values {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
+        .section-accent {
+            position: absolute;
+            z-index: 1;
         }
 
-        .value-item {
-            padding: 30px;
+        .accent-1 {
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: rgba(255, 90, 0, 0.05);
+        }
+
+        .accent-2 {
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-color: rgba(15, 28, 46, 0.5);
+        }
+
+        .accent-3 {
+            top: 40%;
+            left: 30%;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.02);
+            transform: rotate(45deg);
+        }
+
+        /* Approach Section */
+        .approach-section {
+            padding: 120px 0;
             background-color: var(--navy);
-            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .approach-boxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .approach-box {
+            padding: 40px;
+            background-color: rgba(26, 26, 46, 0.5);
+            border-radius: 10px;
+            transition: var(--transition);
+            border-left: 4px solid var(--orange);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .approach-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 90, 0, 0.05) 0%, transparent 100%);
+            opacity: 0;
             transition: var(--transition);
         }
 
-        .value-item:hover {
-            transform: translateY(-5px);
+        .approach-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .value-item h3 {
-            color: var(--orange);
+        .approach-box:hover::before {
+            opacity: 1;
+        }
+
+        .approach-box h3 {
             font-size: 24px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            color: var(--orange);
+            position: relative;
         }
 
-        .value-item p {
+        .approach-box h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--orange);
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+            opacity: 0.7;
+        }
+
+        .approach-box p {
             font-size: 18px;
-            line-height: 1.5;
+            line-height: 1.6;
             color: var(--light-grey);
+            position: relative;
+            z-index: 2;
+        }
+
+        .clients-section {
+            padding: 120px 0;
+            background-color: var(--dark-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clients-text {
+            font-size: 22px;
+            line-height: 1.7;
+            margin-bottom: 60px;
+            color: var(--light-grey);
+            max-width: 900px;
+            position: relative;
+            padding-left: 25px;
+            border-left: 4px solid var(--orange);
+        }
+
+        .call-to-action {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .call-to-action::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 20%;
+            background-color: rgba(255, 90, 0, 0.1);
+            left: 0;
+            bottom: 0;
+            z-index: -1;
         }
 
         /* Footer */
         footer {
             background-color: var(--navy);
             color: var(--white);
-            padding: 60px 0 30px;
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
         }
 
         .footer-content {
@@ -315,6 +560,8 @@
             grid-template-columns: 2fr 1fr 1fr;
             gap: 60px;
             margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-logo {
@@ -341,6 +588,18 @@
             font-size: 20px;
             margin-bottom: 25px;
             color: var(--white);
+            position: relative;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--orange);
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
         }
 
         .footer-links {
@@ -355,11 +614,29 @@
             color: var(--light-grey);
             text-decoration: none;
             transition: var(--transition);
+            position: relative;
+            padding-left: 0;
+            display: inline-block;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            background-color: var(--orange);
+            left: 0;
+            bottom: -2px;
+            transition: var(--transition);
         }
 
         .footer-links a:hover {
             color: var(--orange);
             padding-left: 5px;
+        }
+
+        .footer-links a:hover::before {
+            width: 100%;
         }
 
         .copyright {
@@ -368,36 +645,64 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             color: var(--medium-grey);
             font-size: 16px;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Animations */
-        @keyframes fadeUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        .footer-accent {
+            position: absolute;
+            z-index: 1;
         }
 
-        .animate-fadeUp {
-            animation: fadeUp 0.5s ease forwards;
+        .footer-accent-1 {
+            bottom: -200px;
+            right: -200px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-color: rgba(255, 90, 0, 0.05);
+        }
+
+        /* Animated Elements */
+        .animate-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-up.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .delay-1 {
-            animation-delay: 0.1s;
+            transition-delay: 0.1s;
         }
 
         .delay-2 {
-            animation-delay: 0.2s;
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-4 {
+            transition-delay: 0.4s;
         }
 
         /* Responsive Styles */
         @media (max-width: 1200px) {
             .hero h1 {
                 font-size: 60px;
+            }
+            
+            .section-title {
+                font-size: 42px;
+            }
+            
+            .call-to-action {
+                font-size: 28px;
             }
         }
 
@@ -430,6 +735,10 @@
                 gap: 40px;
             }
             
+            .approach-boxes {
+                grid-template-columns: 1fr;
+            }
+            
             .progress-container {
                 right: 15px;
             }
@@ -440,6 +749,10 @@
         }
 
         @media (max-width: 768px) {
+            .hero {
+                padding: 100px 0 80px;
+            }
+            
             .hero h1 {
                 font-size: 48px;
             }
@@ -448,34 +761,59 @@
                 font-size: 18px;
             }
             
+            .hero p:first-of-type {
+                font-size: 24px;
+            }
+            
             .section-title {
                 font-size: 36px;
             }
             
-            .value-item {
-                padding: 20px;
+            .approach-box {
+                padding: 30px;
+            }
+            
+            .about-section, 
+            .approach-section,
+            .clients-section {
+                padding: 80px 0;
+            }
+            
+            .call-to-action {
+                font-size: 24px;
+            }
+            
+            .clients-text {
+                font-size: 18px;
+                margin-bottom: 40px;
             }
         }
 
         @media (max-width: 576px) {
             .hero {
-                padding: 60px 0;
+                padding: 80px 0 60px;
             }
             
             .hero h1 {
                 font-size: 36px;
             }
             
-            .value-item {
-                grid-column: span 2;
+            .about-section, 
+            .approach-section,
+            .clients-section {
+                padding: 60px 0;
             }
             
             .progress-container {
                 display: none;
             }
             
-            .about-values {
-                grid-template-columns: 1fr;
+            .about-text::before {
+                left: -15px;
+            }
+            
+            .approach-box {
+                padding: 25px;
             }
         }
     </style>
@@ -483,19 +821,19 @@
 <body>
     <!-- Progress Bar -->
     <div class="progress-container">
-        <div class="progress-dot active" data-page="index.html">
+        <div class="progress-dot active" data-page="/Andmi/index.html">
             <span class="tooltip">Home</span>
         </div>
-        <div class="progress-dot" data-page="about.html">
+        <div class="progress-dot" data-page="/Andmi/about.html">
             <span class="tooltip">About</span>
         </div>
-        <div class="progress-dot" data-page="services.html">
+        <div class="progress-dot" data-page="/Andmi/services.html">
             <span class="tooltip">Services</span>
         </div>
-        <div class="progress-dot" data-page="process.html">
+        <div class="progress-dot" data-page="/Andmi/process.html">
             <span class="tooltip">Process</span>
         </div>
-        <div class="progress-dot" data-page="contact.html">
+        <div class="progress-dot" data-page="/Andmi/contact.html">
             <span class="tooltip">Contact</span>
         </div>
     </div>
@@ -504,13 +842,13 @@
     <header>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo">&<span>Mi</span></a>
+                <a href="/Andmi/index.html" class="logo">&<span>Mi</span></a>
                 <div class="nav-links">
-                    <a href="index.html" class="nav-link active">Home</a>
-                    <a href="about.html" class="nav-link">About</a>
-                    <a href="services.html" class="nav-link">Services</a>
-                    <a href="process.html" class="nav-link">Process</a>
-                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="/Andmi/index.html" class="nav-link active">Home</a>
+                    <a href="/Andmi/about.html" class="nav-link">About</a>
+                    <a href="/Andmi/services.html" class="nav-link">Services</a>
+                    <a href="/Andmi/process.html" class="nav-link">Process</a>
+                    <a href="/Andmi/contact.html" class="nav-link">Contact</a>
                 </div>
                 <button class="mobile-nav-toggle">☰</button>
             </nav>
@@ -521,63 +859,86 @@
     <section class="hero">
         <div class="geometric-shape shape-1"></div>
         <div class="geometric-shape shape-2"></div>
+        <div class="geometric-shape shape-3"></div>
+        <div class="geometric-shape shape-4"></div>
         <div class="container hero-container">
             <div>
-                <h1 class="animate-fadeUp">Brand, Strategy & <span>Growth</span> Consultancy</h1>
-                <p class="animate-fadeUp delay-1">We believe your brand is a reflection of your company. A strong brand leads to effective strategy and sustainable growth.</p>
-                <a href="contact.html" class="cta-button animate-fadeUp delay-2">Get in touch</a>
+                <h1 class="animate-up"><span>Brand-Led</span> Strategy & Growth Consultancy | Greater China</h1>
+                <p class="animate-up delay-1">Unlock Business Growth Through Brand-Led Strategy</p>
+                <p class="animate-up delay-2">Your brand isn't just your logo, it's your most valuable strategic asset. At &Mi, we transform how businesses grow by putting brand at the centre of every strategic decision. We serve clients from Greater China looking to expand into global markets, particularly the US and Europe.</p>
+                <a href="/Andmi/contact.html" class="cta-button animate-up delay-3">Get in touch</a>
             </div>
         </div>
     </section>
 
     <section class="about-section">
+        <div class="section-accent accent-1"></div>
+        <div class="section-accent accent-2"></div>
+        <div class="section-accent accent-3"></div>
         <div class="container">
-            <h2 class="section-title">About <span>Andmi</span></h2>
+            <h2 class="section-title animate-up">Why <span>&Mi</span>?</h2>
             <div class="about-content">
-                <div class="about-text">
-                    <p>Andmi (pronounced "and me") emphasises our collaborative nature. We work alongside you to understand your business challenges and identify opportunities for growth.</p>
-                    <p>We believe that you know your product best, and we know how to help you maximise the opportunities your product presents. Together, we create strategies that drive sustainable growth.</p>
-                    <p>Our methodology combines proven business frameworks with innovative approaches to provide comprehensive analysis and actionable recommendations tailored to your specific needs.</p>
-                </div>
-                <div class="about-values">
-                    <div class="value-item">
-                        <h3>Collaborative</h3>
-                        <p>We work with you, not for you. Your insights combined with our expertise create powerful results.</p>
-                    </div>
-                    <div class="value-item">
-                        <h3>Strategic</h3>
-                        <p>We use proven theories, models and tools to evaluate your market and processes.</p>
-                    </div>
-                    <div class="value-item">
-                        <h3>Innovative</h3>
-                        <p>We embrace new technologies and methods, including AI as a productivity accelerator.</p>
-                    </div>
-                    <div class="value-item">
-                        <h3>Growth-focused</h3>
-                        <p>Everything we do is designed to drive sustainable, long-term growth for your business.</p>
-                    </div>
+                <div class="about-text animate-up delay-1">
+                    <p>Our name, pronounced "and me," embodies our collaborative approach. We embed ourselves in your business to create brand-led growth strategies that honour your team's expertise while delivering measurable business results.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="approach-section">
+        <div class="section-accent accent-1"></div>
+        <div class="section-accent accent-2"></div>
+        <div class="container">
+            <h2 class="section-title animate-up">Our <span>Approach</span></h2>
+            <div class="approach-boxes">
+                <div class="approach-box animate-up delay-1">
+                    <h3>Data-Driven Discovery</h3>
+                    <p>Stakeholder interviews and structured frameworks uncover authentic insights</p>
+                </div>
+                <div class="approach-box animate-up delay-2">
+                    <h3>Brand-First Growth</h3>
+                    <p>Leverage your brand's unique strengths for sustainable competitive advantage</p>
+                </div>
+                <div class="approach-box animate-up delay-3">
+                    <h3>Market Expansion</h3>
+                    <p>Navigate complex US and European markets with culturally-attuned strategies for Greater China businesses</p>
+                </div>
+                <div class="approach-box animate-up delay-4">
+                    <h3>Actionable Implementation</h3>
+                    <p>Clear roadmaps with measurable ROI and defined success metrics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="clients-section">
+        <div class="section-accent accent-1"></div>
+        <div class="section-accent accent-3"></div>
+        <div class="container">
+            <p class="clients-text animate-up">Our methodology blends proven business frameworks with innovative brand thinking to accelerate your business.</p>
+            <p class="call-to-action animate-up delay-1">Harness your brand's full strategic potential.</p>
+            <a href="/Andmi/contact.html" class="cta-button animate-up delay-2">Get in touch today</a>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
+        <div class="footer-accent footer-accent-1"></div>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <a href="index.html" class="footer-logo">&<span>Mi</span></a>
+                    <a href="/Andmi/index.html" class="footer-logo">&<span>Mi</span></a>
                     <p class="footer-description">Brand, Strategy & Growth Consultancy. We help businesses build strong brands, develop effective strategies, and achieve sustainable growth.</p>
                 </div>
                 
                 <div class="footer-nav">
                     <h4 class="footer-heading">Navigation</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="process.html">Process</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="/Andmi/index.html">Home</a></li>
+                        <li><a href="/Andmi/about.html">About</a></li>
+                        <li><a href="/Andmi/services.html">Services</a></li>
+                        <li><a href="/Andmi/process.html">Process</a></li>
+                        <li><a href="/Andmi/contact.html">Contact</a></li>
                     </ul>
                 </div>
                 
@@ -585,7 +946,7 @@
                     <h4 class="footer-heading">Contact Us</h4>
                     <ul class="footer-links">
                         <li>andy@andmi.cc</li>
-                        <li>London, United Kingdom</li>
+                        <li>Hong Kong, SAR</li>
                     </ul>
                 </div>
             </div>
@@ -619,33 +980,24 @@
             });
             
             // Animate elements when they come into view
+            const animateElements = document.querySelectorAll('.animate-up');
+            
             const animateOnScroll = function() {
-                const elements = document.querySelectorAll('.value-item');
-                
-                elements.forEach(element => {
+                animateElements.forEach(element => {
                     const elementPosition = element.getBoundingClientRect().top;
                     const windowHeight = window.innerHeight;
                     
                     if (elementPosition < windowHeight - 100) {
-                        element.style.opacity = 1;
-                        element.style.transform = 'translateY(0)';
+                        element.classList.add('active');
                     }
                 });
             };
-            
-            // Set initial styles for animation
-            const elementsToAnimate = document.querySelectorAll('.value-item');
-            elementsToAnimate.forEach(element => {
-                element.style.opacity = 0;
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
             
             // Run animation on scroll
             window.addEventListener('scroll', animateOnScroll);
             
             // Run once on load
-            animateOnScroll();
+            setTimeout(animateOnScroll, 300);
         });
     </script>
 </body>
