@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Andmi - Brand, Strategy & Growth Consultancy</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/Andmi/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/Andmi/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/Andmi/favicon-16x16.png">
-    <link rel="manifest" href="/Andmi/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --orange: #FF5A00;
+            --orange-light: rgba(255, 90, 0, 0.1);
             --dark-blue: #1A1A2E;
             --navy: #0F1C2E;
             --charcoal: #222831;
@@ -35,12 +32,14 @@
             background-color: var(--dark-blue);
             color: var(--off-white);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
         }
 
         /* Header */
@@ -48,6 +47,7 @@
             padding: 30px 0;
             position: relative;
             background-color: var(--navy);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
@@ -171,41 +171,53 @@
 
         /* Hero Section */
         .hero {
-            padding: 100px 0;
+            padding: 150px 0 100px;
             position: relative;
             overflow: hidden;
             background-color: var(--navy);
-        }
-
-        .hero-container {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .hero h1 {
             font-size: 72px;
             line-height: 1.1;
             max-width: 800px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             color: var(--white);
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 span {
             color: var(--orange);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 30%;
+            background-color: rgba(255, 90, 0, 0.15);
+            left: -10%;
+            bottom: 0;
+            z-index: -1;
+            border-radius: 4px;
         }
 
         .hero p {
             font-size: 22px;
             max-width: 650px;
-            margin-bottom: 40px;
-            line-height: 1.5;
+            line-height: 1.6;
             color: var(--light-grey);
+            position: relative;
+            z-index: 2;
         }
 
         .geometric-shape {
             position: absolute;
-            z-index: -1;
+            z-index: 1;
         }
 
         .shape-1 {
@@ -217,28 +229,86 @@
             background-color: rgba(255, 90, 0, 0.1);
         }
 
+        .shape-2 {
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .shape-3 {
+            top: 40%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255, 255, 255, 0.02);
+            transform: rotate(45deg);
+        }
+
         /* Contact Section */
         .contact-section {
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-accent {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .accent-1 {
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: rgba(255, 90, 0, 0.05);
+        }
+
+        .accent-2 {
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-color: rgba(15, 28, 46, 0.3);
         }
 
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
-            align-items: center;
+            align-items: start;
+            position: relative;
+            z-index: 2;
         }
 
         .contact-info h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 32px;
+            margin-bottom: 25px;
             color: var(--white);
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--orange);
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
         }
 
         .contact-info p {
             font-size: 18px;
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 30px;
             color: var(--light-grey);
         }
@@ -248,6 +318,7 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 20px;
+            transition: var(--transition);
         }
 
         .contact-method span {
@@ -255,11 +326,22 @@
             color: var(--light-grey);
         }
 
+        .contact-method:hover span {
+            color: var(--orange);
+        }
+
         .contact-form {
             background-color: var(--navy);
             padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
         .form-group {
@@ -268,18 +350,19 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-weight: 500;
             color: var(--white);
+            font-size: 16px;
         }
 
         .form-control {
             width: 100%;
             padding: 15px;
-            border: 1px solid var(--medium-grey);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             background-color: rgba(255, 255, 255, 0.05);
             color: var(--white);
-            border-radius: 4px;
+            border-radius: 5px;
             font-size: 16px;
             transition: var(--transition);
         }
@@ -287,7 +370,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--orange);
-            box-shadow: 0 0 0 2px rgba(255, 90, 0, 0.2);
+            box-shadow: 0 0 0 3px rgba(255, 90, 0, 0.2);
         }
 
         textarea.form-control {
@@ -302,25 +385,121 @@
             padding: 15px 30px;
             font-size: 18px;
             font-weight: 600;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
             transition: var(--transition);
+            width: 100%;
         }
 
         .submit-button:hover {
             background-color: transparent;
             color: var(--orange);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 90, 0, 0.2);
         }
 
-        .mt-30 {
-            margin-top: 30px;
+        .mt-50 {
+            margin-top: 50px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            margin-bottom: 40px;
+            color: var(--white);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: var(--orange);
+            bottom: -15px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .section-title span {
+            color: var(--orange);
+            position: relative;
+        }
+
+        .section-title span::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(255, 90, 0, 0.1);
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            border-radius: 2px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 120px 0;
+            background-color: var(--dark-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .faq-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            font-size: 22px;
+            color: var(--white);
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .faq-question::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: var(--orange);
+            border-radius: 50%;
+            left: 0;
+            top: 7px;
+        }
+
+        .faq-answer {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--light-grey);
         }
 
         /* Footer */
         footer {
             background-color: var(--navy);
             color: var(--white);
-            padding: 60px 0 30px;
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
         }
 
         .footer-content {
@@ -328,6 +507,22 @@
             grid-template-columns: 2fr 1fr 1fr;
             gap: 60px;
             margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-accent {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .footer-accent-1 {
+            bottom: -200px;
+            right: -200px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-color: rgba(255, 90, 0, 0.05);
         }
 
         .footer-logo {
@@ -354,6 +549,18 @@
             font-size: 20px;
             margin-bottom: 25px;
             color: var(--white);
+            position: relative;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--orange);
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
         }
 
         .footer-links {
@@ -368,11 +575,29 @@
             color: var(--light-grey);
             text-decoration: none;
             transition: var(--transition);
+            position: relative;
+            padding-left: 0;
+            display: inline-block;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            background-color: var(--orange);
+            left: 0;
+            bottom: -2px;
+            transition: var(--transition);
         }
 
         .footer-links a:hover {
             color: var(--orange);
             padding-left: 5px;
+        }
+
+        .footer-links a:hover::before {
+            width: 100%;
         }
 
         .copyright {
@@ -381,12 +606,51 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             color: var(--medium-grey);
             font-size: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Animated Elements */
+        .animate-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-4 {
+            transition-delay: 0.4s;
         }
 
         /* Responsive Styles */
         @media (max-width: 1200px) {
             .hero h1 {
                 font-size: 60px;
+            }
+            
+            .section-title {
+                font-size: 42px;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
             }
         }
 
@@ -419,6 +683,10 @@
                 gap: 40px;
             }
             
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .progress-container {
                 right: 15px;
             }
@@ -429,6 +697,10 @@
         }
 
         @media (max-width: 768px) {
+            .hero {
+                padding: 100px 0 80px;
+            }
+            
             .hero h1 {
                 font-size: 48px;
             }
@@ -437,13 +709,31 @@
                 font-size: 18px;
             }
             
+            .contact-section,
+            .faq-section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
             .contact-form {
                 padding: 30px;
+            }
+            
+            .faq-question {
+                font-size: 20px;
             }
         }
 
         @media (max-width: 576px) {
             .hero {
+                padding: 80px 0 60px;
+            }
+            
+            .contact-section,
+            .faq-section {
                 padding: 60px 0;
             }
             
@@ -451,8 +741,16 @@
                 font-size: 36px;
             }
             
+            .section-title {
+                font-size: 32px;
+            }
+            
             .progress-container {
                 display: none;
+            }
+            
+            .contact-info h3 {
+                font-size: 28px;
             }
         }
     </style>
@@ -494,19 +792,24 @@
         </div>
     </header>
 
-    <!-- Contact Page Content -->
+    <!-- Contact Hero Section -->
     <section class="hero">
         <div class="geometric-shape shape-1"></div>
+        <div class="geometric-shape shape-2"></div>
+        <div class="geometric-shape shape-3"></div>
         <div class="container">
-            <h1>Get in <span>Touch</span></h1>
-            <p>Ready to transform your brand and accelerate growth? Let's start the conversation.</p>
+            <h1 class="animate-up">Get in <span>Touch</span></h1>
+            <p class="animate-up delay-1">Ready to transform your brand and accelerate growth? Let's start the conversation.</p>
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section class="contact-section">
+        <div class="section-accent accent-1"></div>
+        <div class="section-accent accent-2"></div>
         <div class="container">
             <div class="contact-container">
-                <div class="contact-info">
+                <div class="contact-info animate-up">
                     <h3>Let's Collaborate</h3>
                     <p>We're excited to learn about your business and discuss how Andmi can help you achieve your goals. Reach out to us using the form or contact details below.</p>
                     
@@ -515,17 +818,17 @@
                     </div>
                     
                     <div class="contact-method">
-                        <span>Location: London, United Kingdom</span>
+                        <span>Location: Hong Kong SAR, China</span>
                     </div>
                     
-                    <p>We typically respond to inquiries within 24 hours. Looking forward to connecting with you!</p>
+                    <p>We typically respond to enquiries within 24 hours. Looking forward to connecting with you!</p>
                     
-                    <h3 class="mt-30">What to Expect</h3>
+                    <h3 class="mt-50">What to Expect</h3>
                     <p>When you reach out to us, we'll schedule an initial consultation to understand your needs and determine how we can best support your business. This conversation is an opportunity for both of us to assess whether we're a good fit for working together.</p>
                     <p>If we move forward, we'll develop a tailored proposal outlining our recommended approach, timeline, and investment. We believe in transparency and will clearly communicate what you can expect from our partnership.</p>
                 </div>
                 
-                <div class="contact-form">
+                <div class="contact-form animate-up delay-2">
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Your Name</label>
@@ -554,8 +857,39 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-accent accent-3"></div>
+        <div class="container">
+            <h2 class="section-title animate-up">Frequently Asked <span>Questions</span></h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item animate-up delay-1">
+                    <h3 class="faq-question">How do you typically work with clients?</h3>
+                    <p class="faq-answer">Our collaborative process begins with understanding your specific challenges and objectives. We then develop a customised strategy that leverages your unique brand strengths to drive growth. Throughout our partnership, we maintain regular communication and provide ongoing support to ensure successful implementation.</p>
+                </div>
+                
+                <div class="faq-item animate-up delay-2">
+                    <h3 class="faq-question">What industries do you specialise in?</h3>
+                    <p class="faq-answer">While we have experience across various sectors, we have particular expertise in working with technology businesses. Our adaptable approach allows us to apply strategic frameworks effectively across different industries.</p>
+                </div>
+                
+                <div class="faq-item animate-up delay-2">
+                    <h3 class="faq-question">How long does a typical engagement last?</h3>
+                    <p class="faq-answer">Most initial strategy development engagements last 8-12 weeks, though this can vary based on project scope and complexity. Many clients choose to continue with ongoing advisory support after the initial phase to ensure effective implementation and adaptation as market conditions evolve.</p>
+                </div>
+                
+                <div class="faq-item animate-up delay-1">
+                    <h3 class="faq-question">What makes Andmi different from other consultancies?</h3>
+                    <p class="faq-answer">Our distinctive approach integrates brand strategy with business growth objectives, ensuring alignment between how you're perceived and your strategic ambitions. We combine analytical rigour with creative thinking, and emphasise practical implementation over theoretical frameworks. Our global perspective coupled with localised expertise allows us to support businesses across different markets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
+        <div class="footer-accent footer-accent-1"></div>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
@@ -578,7 +912,7 @@
                     <h4 class="footer-heading">Contact Us</h4>
                     <ul class="footer-links">
                         <li>andy@andmi.cc</li>
-                        <li>London, United Kingdom</li>
+                        <li>Hong Kong SAR, China</li>
                     </ul>
                 </div>
             </div>
@@ -611,7 +945,7 @@
                 });
             });
             
-            // Contact form submission
+            // Contact form submission - preserving the email functionality
             const contactForm = document.getElementById('contactForm');
             
             contactForm.addEventListener('submit', function(e) {
@@ -629,6 +963,26 @@
                 // Reset form
                 contactForm.reset();
             });
+            
+            // Animate elements when they come into view
+            const animateElements = document.querySelectorAll('.animate-up');
+            
+            const animateOnScroll = function() {
+                animateElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        element.classList.add('active');
+                    }
+                });
+            };
+            
+            // Run animation on scroll
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Run once on load
+            setTimeout(animateOnScroll, 300);
         });
     </script>
 </body>

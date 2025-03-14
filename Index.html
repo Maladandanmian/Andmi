@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Andmi - Brand, Strategy & Growth Consultancy</title>
-    <!-- Meta tags for SEO -->
-    <meta name="description" content="&Mi is a brand strategy consultancy helping Greater China companies expand into international markets including US and Europe.">
-    <meta name="keywords" content="brand strategy, Greater China, international expansion, Chinese brands, global markets">
+    <title>Andmi | Brand-Led Strategy & Growth Consultancy | Greater China </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -181,14 +178,21 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
         .hero h1 {
-            font-size: 80px;
+            font-size: 72px;
             line-height: 1.1;
             max-width: 800px;
             margin-bottom: 20px;
             color: var(--white);
             position: relative;
-            z-index: 2;
         }
 
         .hero h1 span {
@@ -209,13 +213,70 @@
             border-radius: 4px;
         }
 
-        .hero-subtitle {
-            font-size: 24px;
+        .hero p {
+            font-size: 22px;
             max-width: 650px;
             margin-bottom: 40px;
-            line-height: 1.5;
+            line-height: 1.6;
             color: var(--light-grey);
-            opacity: 0.9;
+        }
+
+        .hero p:first-of-type {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero p:first-of-type::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--orange);
+            bottom: -10px;
+            left: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background-color: var(--orange);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-size: 18px;
+            border: 2px solid var(--orange);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 6px 15px rgba(255, 90, 0, 0.2);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            color: var(--orange);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 90, 0, 0.3);
+        }
+
+        .cta-button:hover::before {
+            background-color: var(--white);
         }
 
         .geometric-shape {
@@ -234,53 +295,37 @@
 
         .shape-2 {
             bottom: -150px;
-            left: -150px;
+            left: -50px;
             width: 400px;
             height: 400px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.03);
+            background-color: rgba(26, 26, 46, 0.3);
         }
 
         .shape-3 {
-            top: 40%;
+            top: 30%;
+            left: 40%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .shape-4 {
+            top: 60%;
             right: 10%;
             width: 150px;
             height: 150px;
-            background-color: rgba(255, 255, 255, 0.02);
+            background-color: rgba(255, 255, 255, 0.03);
             transform: rotate(45deg);
         }
 
-        .highlight-box {
-            position: relative;
-        }
-
-        .highlight-box::before {
-            content: '';
-            position: absolute;
-            width: 4px;
-            height: 100%;
-            background-color: var(--orange);
-            left: -20px;
-            border-radius: 2px;
-        }
-
-        /* Section Styles */
-        .section {
+        /* About Section */
+        .about-section {
             padding: 120px 0;
+            background-color: var(--dark-blue);
             position: relative;
             overflow: hidden;
-        }
-
-        .section-navy {
-            background-color: var(--navy);
-        }
-
-        .section-dark-blue {
-            background-color: var(--dark-blue);
-        }
-
-        .section-charcoal {
-            background-color: var(--charcoal);
         }
 
         .section-title {
@@ -302,201 +347,202 @@
             border-radius: 2px;
         }
 
-        .section-content {
-            max-width: 800px;
+        .section-title span {
+            color: var(--orange);
             position: relative;
         }
 
-        .section-content p {
-            font-size: 20px;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            color: var(--light-grey);
+        .section-title span::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(255, 90, 0, 0.1);
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            border-radius: 2px;
         }
 
-        .section-content p:last-child {
-            margin-bottom: 0;
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-text {
+            position: relative;
+        }
+
+        .about-text::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            background-color: var(--orange);
+            left: -20px;
+            border-radius: 2px;
+            opacity: 0.7;
+        }
+
+        .about-text p {
+            font-size: 20px;
+            line-height: 1.8;
+            color: var(--light-grey);
+            position: relative;
+            z-index: 2;
         }
 
         .section-accent {
             position: absolute;
-            z-index: 0;
+            z-index: 1;
         }
 
         .accent-1 {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background-color: rgba(255, 90, 0, 0.05);
             top: -100px;
             right: -100px;
-        }
-
-        .accent-2 {
             width: 300px;
             height: 300px;
             border-radius: 50%;
-            background-color: rgba(15, 28, 46, 0.3);
+            background-color: rgba(255, 90, 0, 0.05);
+        }
+
+        .accent-2 {
             bottom: -150px;
             left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-color: rgba(15, 28, 46, 0.5);
         }
 
-        /* Two Column Layout */
-        .two-column-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            position: relative;
-            z-index: 2;
+        .accent-3 {
+            top: 40%;
+            left: 30%;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.02);
+            transform: rotate(45deg);
         }
 
-        /* Expertise Section */
-        .expertise-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: flex-start;
-            position: relative;
-            z-index: 2;
-        }
-
-        .expertise-content {
-            max-width: 100%;
-        }
-
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-
-        .expertise-item {
-            padding: 30px;
+        /* Approach Section */
+        .approach-section {
+            padding: 120px 0;
             background-color: var(--navy);
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .approach-boxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .approach-box {
+            padding: 40px;
+            background-color: rgba(26, 26, 46, 0.5);
             border-radius: 10px;
             transition: var(--transition);
-            height: 100%;
+            border-left: 4px solid var(--orange);
             position: relative;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.05);
             overflow: hidden;
+            height: 100%;
         }
 
-        .expertise-item::before {
+        .approach-box::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background-color: var(--orange);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .expertise-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .expertise-item:hover::before {
-            transform: scaleX(1);
-        }
-
-        .expertise-item h3 {
-            color: var(--orange);
-            font-size: 24px;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .expertise-item p {
-            font-size: 17px;
-            line-height: 1.6;
-            color: var(--light-grey);
-            margin-bottom: 0;
-        }
-
-        /* Difference Cards */
-        .difference-card {
-            padding: 40px;
-            background-color: rgba(15, 28, 46, 0.5);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
             height: 100%;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, rgba(255, 90, 0, 0.05) 0%, transparent 100%);
+            opacity: 0;
             transition: var(--transition);
         }
 
-        .difference-card:hover {
-            transform: translateY(-5px);
+        .approach-box:hover {
+            transform: translateY(-8px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .difference-card p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: var(--light-grey);
+        .approach-box:hover::before {
+            opacity: 1;
         }
 
-        .difference-card::before {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 4px;
-            background-color: var(--orange);
-            top: 20px;
-            left: 40px;
-            border-radius: 2px;
-        }
-
-        /* Quote Block */
-        .quote-block {
-            margin: 50px 0;
-            padding: 40px;
-            background-color: rgba(255, 90, 0, 0.1);
-            border-left: 5px solid var(--orange);
-            border-radius: 0 10px 10px 0;
-        }
-
-        .quote-text {
+        .approach-box h3 {
             font-size: 24px;
-            font-weight: 500;
-            font-style: italic;
-            color: var(--white);
             margin-bottom: 20px;
-        }
-
-        .quote-author {
-            font-size: 18px;
-            color: var(--light-grey);
-        }
-
-        /* Feature List */
-        .feature-list {
-            margin: 30px 0;
-            list-style: none;
-        }
-
-        .feature-list li {
+            color: var(--orange);
             position: relative;
-            padding-left: 30px;
-            margin-bottom: 15px;
-            font-size: 18px;
-            color: var(--light-grey);
         }
 
-        .feature-list li::before {
+        .approach-box h3::after {
             content: '';
             position: absolute;
-            width: 8px;
-            height: 8px;
+            width: 40px;
+            height: 3px;
             background-color: var(--orange);
-            border-radius: 50%;
+            bottom: -10px;
             left: 0;
-            top: 12px;
+            border-radius: 2px;
+            opacity: 0.7;
+        }
+
+        .approach-box p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--light-grey);
+            position: relative;
+            z-index: 2;
+        }
+
+        .clients-section {
+            padding: 120px 0;
+            background-color: var(--dark-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clients-text {
+            font-size: 22px;
+            line-height: 1.7;
+            margin-bottom: 60px;
+            color: var(--light-grey);
+            max-width: 900px;
+            position: relative;
+            padding-left: 25px;
+            border-left: 4px solid var(--orange);
+        }
+
+        .call-to-action {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .call-to-action::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 20%;
+            background-color: rgba(255, 90, 0, 0.1);
+            left: 0;
+            bottom: 0;
+            z-index: -1;
         }
 
         /* Footer */
@@ -505,6 +551,8 @@
             color: var(--white);
             padding: 80px 0 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
         }
 
         .footer-content {
@@ -512,6 +560,8 @@
             grid-template-columns: 2fr 1fr 1fr;
             gap: 60px;
             margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-logo {
@@ -564,11 +614,29 @@
             color: var(--light-grey);
             text-decoration: none;
             transition: var(--transition);
+            position: relative;
+            padding-left: 0;
+            display: inline-block;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            background-color: var(--orange);
+            left: 0;
+            bottom: -2px;
+            transition: var(--transition);
         }
 
         .footer-links a:hover {
             color: var(--orange);
             padding-left: 5px;
+        }
+
+        .footer-links a:hover::before {
+            width: 100%;
         }
 
         .copyright {
@@ -577,6 +645,22 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             color: var(--medium-grey);
             font-size: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-accent {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .footer-accent-1 {
+            bottom: -200px;
+            right: -200px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-color: rgba(255, 90, 0, 0.05);
         }
 
         /* Animated Elements */
@@ -610,11 +694,15 @@
         /* Responsive Styles */
         @media (max-width: 1200px) {
             .hero h1 {
-                font-size: 62px;
+                font-size: 60px;
             }
             
             .section-title {
                 font-size: 42px;
+            }
+            
+            .call-to-action {
+                font-size: 28px;
             }
         }
 
@@ -641,11 +729,14 @@
                 display: block;
             }
             
-            .two-column-grid,
-            .expertise-section,
+            .about-content,
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
+            }
+            
+            .approach-boxes {
+                grid-template-columns: 1fr;
             }
             
             .progress-container {
@@ -654,15 +745,6 @@
             
             .progress-dot .tooltip {
                 display: none;
-            }
-            
-            .quote-block {
-                margin: 40px 0;
-                padding: 30px;
-            }
-            
-            .quote-text {
-                font-size: 22px;
             }
         }
 
@@ -675,32 +757,35 @@
                 font-size: 48px;
             }
             
-            .hero-subtitle {
-                font-size: 20px;
+            .hero p {
+                font-size: 18px;
             }
             
-            .section {
-                padding: 80px 0;
+            .hero p:first-of-type {
+                font-size: 24px;
             }
             
             .section-title {
                 font-size: 36px;
             }
             
-            .section-content p {
-                font-size: 18px;
-            }
-            
-            .expertise-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .expertise-item {
-                padding: 25px;
-            }
-            
-            .difference-card {
+            .approach-box {
                 padding: 30px;
+            }
+            
+            .about-section, 
+            .approach-section,
+            .clients-section {
+                padding: 80px 0;
+            }
+            
+            .call-to-action {
+                font-size: 24px;
+            }
+            
+            .clients-text {
+                font-size: 18px;
+                margin-bottom: 40px;
             }
         }
 
@@ -709,33 +794,26 @@
                 padding: 80px 0 60px;
             }
             
-            .section {
-                padding: 60px 0;
-            }
-            
             .hero h1 {
-                font-size: 38px;
+                font-size: 36px;
             }
             
-            .hero-subtitle {
-                font-size: 18px;
-            }
-            
-            .section-title {
-                font-size: 32px;
-            }
-            
-            .quote-block {
-                padding: 25px;
-                margin: 30px 0;
-            }
-            
-            .quote-text {
-                font-size: 20px;
+            .about-section, 
+            .approach-section,
+            .clients-section {
+                padding: 60px 0;
             }
             
             .progress-container {
                 display: none;
+            }
+            
+            .about-text::before {
+                left: -15px;
+            }
+            
+            .approach-box {
+                padding: 25px;
             }
         }
     </style>
@@ -743,10 +821,10 @@
 <body>
     <!-- Progress Bar -->
     <div class="progress-container">
-        <div class="progress-dot" data-page="index.html">
+        <div class="progress-dot active" data-page="index.html">
             <span class="tooltip">Home</span>
         </div>
-        <div class="progress-dot active" data-page="about.html">
+        <div class="progress-dot" data-page="about.html">
             <span class="tooltip">About</span>
         </div>
         <div class="progress-dot" data-page="services.html">
@@ -766,8 +844,8 @@
             <nav>
                 <a href="index.html" class="logo">&<span>Mi</span></a>
                 <div class="nav-links">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="about.html" class="nav-link active">About</a>
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
                     <a href="services.html" class="nav-link">Services</a>
                     <a href="process.html" class="nav-link">Process</a>
                     <a href="contact.html" class="nav-link">Contact</a>
@@ -777,105 +855,75 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Home Page Content -->
     <section class="hero">
         <div class="geometric-shape shape-1"></div>
         <div class="geometric-shape shape-2"></div>
         <div class="geometric-shape shape-3"></div>
-        <div class="container">
-            <h1 class="animate-up">About <span>&Mi</span></h1>
-            <p class="hero-subtitle animate-up delay-1">Helping businesses from Greater China expand successfully into global markets through brand-led strategy.</p>
-        </div>
-    </section>
-
-    <!-- Strategic Vision Section -->
-    <section class="section section-dark-blue">
-        <div class="section-accent accent-1"></div>
-        <div class="container">
-            <div class="section-content animate-up">
-                <h2 class="section-title">Strategic Vision Meets Practical Implementation</h2>
-                <div class="highlight-box">
-                    <p>At &Mi, we transform how businesses grow by putting brand at the centre of every strategic decision. Our foundation rests on a powerful insight: your brand isn't just your logo--it's your most valuable strategic asset and the cornerstone of sustainable business growth.</p>
-                </div>
-                
-                <div class="quote-block">
-                    <p class="quote-text">"Your brand is the single most important investment you can make in your business - Steve Forbes."</p>
-                </div>
-                
-                <ul class="feature-list">
-                    <li>Strategy without implementation is just theory</li>
-                    <li>Implementation without strategy is just busy work</li>
-                    <li>Brand-led strategy connects vision with execution</li>
-                </ul>
+        <div class="geometric-shape shape-4"></div>
+        <div class="container hero-container">
+            <div>
+                <h1 class="animate-up"><span>Brand-Led</span> Strategy & Growth Consultancy | Greater China</h1>
+                <p class="animate-up delay-1">Unlock Business Growth Through Brand-Led Strategy</p>
+                <p class="animate-up delay-2">Your brand isn't just your logo, it's your most valuable strategic asset. At &Mi, we transform how businesses grow by putting brand at the centre of every strategic decision. We serve clients from Greater China looking to expand into global markets, particularly the US and Europe.</p>
+                <a href="contact.html" class="cta-button animate-up delay-3">Get in touch</a>
             </div>
         </div>
     </section>
 
-    <!-- Strategic Foundation Section -->
-    <section class="section section-charcoal">
+    <section class="about-section">
+        <div class="section-accent accent-1"></div>
+        <div class="section-accent accent-2"></div>
+        <div class="section-accent accent-3"></div>
+        <div class="container">
+            <h2 class="section-title animate-up">Why <span>&Mi</span>?</h2>
+            <div class="about-content">
+                <div class="about-text animate-up delay-1">
+                    <p>Our name, pronounced "and me," embodies our collaborative approach. We embed ourselves in your business to create brand-led growth strategies that honour your team's expertise while delivering measurable business results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="approach-section">
+        <div class="section-accent accent-1"></div>
         <div class="section-accent accent-2"></div>
         <div class="container">
-            <div class="section-content animate-up">
-                <h2 class="section-title">Our Strategic Foundation</h2>
-                <p>While most consultancies relegate brand to a marketing function, we recognise it as the central foundation of all business strategy. This fundamental difference in perspective is what makes our approach transformative.</p>
-                
-                <p>By positioning brand at the core of strategic decision-making, we create alignment across all business functions. This integrated approach ensures that every touchpoint reinforces your unique market position and value proposition.</p>
+            <h2 class="section-title animate-up">Our <span>Approach</span></h2>
+            <div class="approach-boxes">
+                <div class="approach-box animate-up delay-1">
+                    <h3>Data-Driven Discovery</h3>
+                    <p>Stakeholder interviews and structured frameworks uncover authentic insights</p>
+                </div>
+                <div class="approach-box animate-up delay-2">
+                    <h3>Brand-First Growth</h3>
+                    <p>Leverage your brand's unique strengths for sustainable competitive advantage</p>
+                </div>
+                <div class="approach-box animate-up delay-3">
+                    <h3>Market Expansion</h3>
+                    <p>Navigate complex US and European markets with culturally-attuned strategies for Greater China businesses</p>
+                </div>
+                <div class="approach-box animate-up delay-4">
+                    <h3>Actionable Implementation</h3>
+                    <p>Clear roadmaps with measurable ROI and defined success metrics</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Cross-Cultural Expertise Section -->
-    <section class="section section-dark-blue">
+    <section class="clients-section">
         <div class="section-accent accent-1"></div>
+        <div class="section-accent accent-3"></div>
         <div class="container">
-            <div class="expertise-section">
-                <div class="expertise-content animate-up">
-                    <h2 class="section-title">Cross-Cultural Brand Expertise</h2>
-                    <p>We bring particular expertise in helping Greater China companies successfully expand into international markets:</p>
-                    
-                    <p>Our deep understanding of both Eastern and Western business contexts allows us to create strategies that resonate with global audiences while preserving your company's unique cultural strengths and identity.</p>
-                </div>
-                
-                <div class="expertise-grid">
-                    <div class="expertise-item animate-up delay-1">
-                        <h3>Mainland China Companies</h3>
-                        <p>Helping Chinese brands adapt their positioning for Western market preferences</p>
-                    </div>
-                    <div class="expertise-item animate-up delay-2">
-                        <h3>Hong Kong Businesses</h3>
-                        <p>Leveraging Hong Kong's unique position to bridge Eastern offerings with Western expectations</p>
-                    </div>
-                    <div class="expertise-item animate-up delay-3">
-                        <h3>Taiwanese Enterprises</h3>
-                        <p>Developing distinctive global brand strategies that showcase Taiwan's technological innovations</p>
-                    </div>
-                    <div class="expertise-item animate-up delay-4">
-                        <h3>Cross-Border Expansion</h3>
-                        <p>Supporting Greater China brands in US and European market entry and growth</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Difference Section -->
-    <section class="section section-charcoal">
-        <div class="section-accent accent-2"></div>
-        <div class="container">
-            <h2 class="section-title animate-up">The &Mi Difference</h2>
-            <div class="two-column-grid">
-                <div class="difference-card animate-up delay-1">
-                    <p>What separates &Mi from other consultancies is our relentless focus on bridging the gap between strategic thinking and practical implementation. Our recommendations aren't theoretical frameworks--they're actionable plans designed for real-world execution in Greater China's fast-evolving markets.</p>
-                </div>
-                <div class="difference-card animate-up delay-2">
-                    <p>Our clients choose us because we combine the strategic rigour of top-tier consultancies with a practical, brand-centred approach that drives genuine business growth. Throughout our engagements, we transfer knowledge to your team, ensuring you build internal capacity for ongoing strategic thinking within China's unique business ecosystem.</p>
-                </div>
-            </div>
+            <p class="clients-text animate-up">Our methodology blends proven business frameworks with innovative brand thinking to accelerate your business.</p>
+            <p class="call-to-action animate-up delay-1">Harness your brand's full strategic potential.</p>
+            <a href="contact.html" class="cta-button animate-up delay-2">Get in touch today</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
+        <div class="footer-accent footer-accent-1"></div>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
@@ -898,7 +946,7 @@
                     <h4 class="footer-heading">Contact Us</h4>
                     <ul class="footer-links">
                         <li>andy@andmi.cc</li>
-                        <li>Hong Kong SAR, China</li>
+                        <li>Hong Kong, SAR</li>
                     </ul>
                 </div>
             </div>
@@ -931,7 +979,7 @@
                 });
             });
             
-            // Animate on scroll
+            // Animate elements when they come into view
             const animateElements = document.querySelectorAll('.animate-up');
             
             const animateOnScroll = function() {

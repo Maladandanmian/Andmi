@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services | Andmi - Brand, Strategy & Growth Consultancy</title>
-   <link rel="apple-touch-icon" sizes="180x180" href="/Andmi/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/Andmi/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/Andmi/favicon-16x16.png">
-    <link rel="manifest" href="/Andmi/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --orange: #FF5A00;
+            --orange-light: rgba(255, 90, 0, 0.1);
             --dark-blue: #1A1A2E;
             --navy: #0F1C2E;
             --charcoal: #222831;
@@ -35,12 +32,14 @@
             background-color: var(--dark-blue);
             color: var(--off-white);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
         }
 
         /* Header */
@@ -48,6 +47,7 @@
             padding: 30px 0;
             position: relative;
             background-color: var(--navy);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
@@ -171,41 +171,53 @@
 
         /* Hero Section */
         .hero {
-            padding: 100px 0;
+            padding: 150px 0 100px;
             position: relative;
             overflow: hidden;
             background-color: var(--navy);
-        }
-
-        .hero-container {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .hero h1 {
             font-size: 72px;
             line-height: 1.1;
             max-width: 800px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             color: var(--white);
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 span {
             color: var(--orange);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 30%;
+            background-color: rgba(255, 90, 0, 0.15);
+            left: -10%;
+            bottom: 0;
+            z-index: -1;
+            border-radius: 4px;
         }
 
         .hero p {
             font-size: 22px;
             max-width: 650px;
-            margin-bottom: 40px;
-            line-height: 1.5;
+            line-height: 1.6;
             color: var(--light-grey);
+            position: relative;
+            z-index: 2;
         }
 
         .geometric-shape {
             position: absolute;
-            z-index: -1;
+            z-index: 1;
         }
 
         .shape-1 {
@@ -217,91 +229,266 @@
             background-color: rgba(255, 90, 0, 0.1);
         }
 
-        /* Services Section */
-        .services-section {
-            padding: 100px 0;
+        .shape-2 {
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .shape-3 {
+            top: 40%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255, 255, 255, 0.02);
+            transform: rotate(45deg);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-dark-blue {
+            background-color: var(--dark-blue);
+        }
+
+        .section-navy {
+            background-color: var(--navy);
+        }
+
+        .section-charcoal {
             background-color: var(--charcoal);
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .service-card {
-            background-color: var(--navy);
-            padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
-
-        .service-title {
-            font-size: 24px;
-            margin-bottom: 15px;
+        .section-title {
+            font-size: 48px;
+            margin-bottom: 40px;
             color: var(--white);
-            border-bottom: 2px solid var(--orange);
-            padding-bottom: 10px;
+            position: relative;
             display: inline-block;
         }
 
-        .service-card p {
-            font-size: 18px;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            color: var(--light-grey);
-        }
-
-        .section-title {
-            font-size: 42px;
-            margin-bottom: 30px;
-            color: var(--white);
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: var(--orange);
+            bottom: -15px;
+            left: 0;
+            border-radius: 2px;
         }
 
         .section-title span {
             color: var(--orange);
+            position: relative;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+        .section-title span::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(255, 90, 0, 0.1);
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            border-radius: 2px;
         }
 
-        .about-text p {
+        .section-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-content p {
             font-size: 20px;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            line-height: 1.8;
+            margin-bottom: 30px;
             color: var(--light-grey);
         }
 
-        .text-white {
-            color: var(--white);
-        }
-        
-        .mb-30 {
-            margin-bottom: 30px;
+        .section-content p:last-child {
+            margin-bottom: 0;
         }
 
-        /* Process Section */
-        .process-section {
-            padding: 100px 0;
+        .section-accent {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .accent-1 {
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: rgba(255, 90, 0, 0.05);
+        }
+
+        .accent-2 {
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-color: rgba(15, 28, 46, 0.3);
+        }
+
+        .accent-3 {
+            top: 40%;
+            left: 30%;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.02);
+            transform: rotate(45deg);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 120px 0;
+            background-color: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .services-intro {
+            max-width: 800px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .services-intro p {
+            font-size: 20px;
+            line-height: 1.7;
+            color: var(--light-grey);
+            margin-bottom: 20px;
+        }
+
+        .service-area {
+            margin-bottom: 100px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-area:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-area-title {
+            font-size: 36px;
+            color: var(--white);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .service-area-title::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--orange);
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .service-area-number {
+            font-size: 18px;
+            color: var(--orange);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .service-area-desc {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--light-grey);
+            margin-bottom: 40px;
+            max-width: 800px;
+            padding-left: 20px;
+            border-left: 3px solid var(--orange);
+        }
+
+        .service-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .service-details h3 {
+            font-size: 24px;
+            color: var(--orange);
+            margin-bottom: 20px;
+        }
+
+        .service-details-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .service-details-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: var(--light-grey);
+            line-height: 1.5;
+        }
+
+        .service-details-list li::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: var(--orange);
+            border-radius: 50%;
+            left: 0;
+            top: 10px;
+        }
+
+        /* Analytical Approach Section */
+        .approach-section {
+            padding: 120px 0;
             background-color: var(--dark-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .approach-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .approach-content p {
+            font-size: 20px;
+            line-height: 1.7;
+            color: var(--light-grey);
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 3px solid var(--orange);
         }
 
         /* Footer */
         footer {
             background-color: var(--navy);
             color: var(--white);
-            padding: 60px 0 30px;
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
         }
 
         .footer-content {
@@ -309,6 +496,8 @@
             grid-template-columns: 2fr 1fr 1fr;
             gap: 60px;
             margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-logo {
@@ -335,6 +524,18 @@
             font-size: 20px;
             margin-bottom: 25px;
             color: var(--white);
+            position: relative;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--orange);
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
         }
 
         .footer-links {
@@ -349,11 +550,29 @@
             color: var(--light-grey);
             text-decoration: none;
             transition: var(--transition);
+            position: relative;
+            padding-left: 0;
+            display: inline-block;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            background-color: var(--orange);
+            left: 0;
+            bottom: -2px;
+            transition: var(--transition);
         }
 
         .footer-links a:hover {
             color: var(--orange);
             padding-left: 5px;
+        }
+
+        .footer-links a:hover::before {
+            width: 100%;
         }
 
         .copyright {
@@ -362,6 +581,50 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             color: var(--medium-grey);
             font-size: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-accent {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .footer-accent-1 {
+            bottom: -200px;
+            right: -200px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-color: rgba(255, 90, 0, 0.05);
+        }
+
+        /* Animated Elements */
+        .animate-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-4 {
+            transition-delay: 0.4s;
         }
 
         /* Responsive Styles */
@@ -370,8 +633,12 @@
                 font-size: 60px;
             }
             
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .section-title {
+                font-size: 42px;
+            }
+            
+            .service-area-title {
+                font-size: 32px;
             }
         }
 
@@ -398,7 +665,11 @@
                 display: block;
             }
             
-            .about-content,
+            .service-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -414,6 +685,10 @@
         }
 
         @media (max-width: 768px) {
+            .hero {
+                padding: 100px 0 80px;
+            }
+            
             .hero h1 {
                 font-size: 48px;
             }
@@ -422,21 +697,44 @@
                 font-size: 18px;
             }
             
-            .services-grid {
-                grid-template-columns: 1fr;
+            .section {
+                padding: 80px 0;
+            }
+            
+            .services-section,
+            .approach-section {
+                padding: 80px 0;
             }
             
             .section-title {
                 font-size: 36px;
             }
             
-            .service-card {
-                padding: 30px;
+            .service-area-title {
+                font-size: 28px;
+            }
+            
+            .service-area-desc {
+                font-size: 18px;
+            }
+            
+            .service-details h3 {
+                font-size: 22px;
+            }
+            
+            .service-area {
+                margin-bottom: 70px;
             }
         }
 
         @media (max-width: 576px) {
             .hero {
+                padding: 80px 0 60px;
+            }
+            
+            .section,
+            .services-section,
+            .approach-section {
                 padding: 60px 0;
             }
             
@@ -444,8 +742,20 @@
                 font-size: 36px;
             }
             
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .service-area-title {
+                font-size: 24px;
+            }
+            
             .progress-container {
                 display: none;
+            }
+            
+            .service-area {
+                margin-bottom: 50px;
             }
         }
     </style>
@@ -487,77 +797,157 @@
         </div>
     </header>
 
-    <!-- Services Page Content -->
+    <!-- Services Hero Section -->
     <section class="hero">
         <div class="geometric-shape shape-1"></div>
+        <div class="geometric-shape shape-2"></div>
+        <div class="geometric-shape shape-3"></div>
         <div class="container">
-            <h1>Our <span>Services</span></h1>
-            <p>Comprehensive consultancy services to elevate your brand, refine your strategy, and accelerate growth.</p>
+            <h1 class="animate-up"><span>Services</span></h1>
+            <p class="animate-up delay-1">Driving Business Growth Through Brand-Led Strategy</p>
+            <p class="animate-up delay-2">Our services combine powerful brand insights with rigorous business frameworks to help companies from Greater China achieve sustainable growth domestically and internationally.</p>
         </div>
     </section>
 
+    <!-- Services Section -->
     <section class="services-section">
+        <div class="section-accent accent-1"></div>
+        <div class="section-accent accent-2"></div>
         <div class="container">
-            <h2 class="section-title">What We <span>Offer</span></h2>
-            <p class="text-white mb-30">We provide a range of services designed to strengthen your brand, improve your strategy, and drive sustainable growth.</p>
+            <h2 class="section-title animate-up">Our Core <span>Service Areas</span></h2>
             
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3 class="service-title">Brand Consultancy</h3>
-                    <p>Our brand consultancy services help you develop a compelling brand identity that reflects your company's values and resonates with your target audience. We conduct thorough market research, competitor analysis, and audience profiling to identify your unique positioning in the marketplace.</p>
-                    <p>Through collaborative workshops and strategic planning sessions, we define your brand's purpose, values, personality, and promise. We then translate these foundational elements into comprehensive brand guidelines that ensure consistency across all touchpoints.</p>
-                </div>
+            <!-- Service Area 1 -->
+            <div class="service-area animate-up">
+                <div class="service-area-number">01</div>
+                <h3 class="service-area-title">Brand-Led Business Strategy</h3>
+                <p class="service-area-desc">Transforming your brand into your strongest competitive advantage</p>
                 
-                <div class="service-card">
-                    <h3 class="service-title">Strategy Development</h3>
-                    <p>Our strategic development services help you create effective business strategies that align with your brand and set you up for sustainable, long-term growth. We begin by analyzing your current market position, internal capabilities, and competitive landscape to identify strategic opportunities.</p>
-                    <p>Using frameworks such as SWOT analysis, Porter's Five Forces, and Blue Ocean Strategy, we help you develop clear strategic objectives and actionable plans to achieve them. Our strategies address all aspects of your business, from marketing and sales to operations and innovation.</p>
+                <div class="service-content">
+                    <div class="service-details animate-up delay-1">
+                        <h3>What we deliver:</h3>
+                        <ul class="service-details-list">
+                            <li>Market opportunity identification through structured evaluation models</li>
+                            <li>Strategic pricing optimisation for target markets</li>
+                            <li>Product innovation guided by established frameworks and market insights</li>
+                            <li>Channel strategy development for physical and digital ecosystems</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-details animate-up delay-2">
+                        <h3>Market focus:</h3>
+                        <ul class="service-details-list">
+                            <li>Brand Architecture - Strategic frameworks for portfolio management</li>
+                            <li>Brand Positioning - Distinctive market positioning based on core strengths</li>
+                            <li>Brand Experience - Consistent customer experience across touchpoints</li>
+                            <li>Brand Metrics - Measurable approaches to track brand equity growth</li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
+            
+            <!-- Service Area 2 -->
+            <div class="service-area animate-up">
+                <div class="service-area-number">02</div>
+                <h3 class="service-area-title">Market Expansion Strategy</h3>
+                <p class="service-area-desc">Strategically entering and expanding in new markets</p>
                 
-                <div class="service-card">
-                    <h3 class="service-title">Growth Consultancy</h3>
-                    <p>Our growth consultancy services focus on identifying opportunities to expand your business and increase revenue. We examine your current customer acquisition and retention strategies, pricing models, and market penetration to uncover growth levers.</p>
-                    <p>Using data-driven analysis and growth frameworks, we help you prioritize initiatives that will deliver the greatest impact with the resources available. Our recommendations include detailed implementation plans and metrics to track success, ensuring accountability and measurable results.</p>
+                <div class="service-content">
+                    <div class="service-details animate-up delay-1">
+                        <h3>What we deliver:</h3>
+                        <ul class="service-details-list">
+                            <li>Market opportunity assessment using systematic evaluation criteria</li>
+                            <li>Market entry strategy development through structured decision matrices</li>
+                            <li>Cross-cultural analysis using established adaptation frameworks</li>
+                            <li>Distributor and sales channel selection frameworks</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-details animate-up delay-2">
+                        <h3>Market focus:</h3>
+                        <ul class="service-details-list">
+                            <li>Local Market Deepening - Strategies for strengthening core market presence</li>
+                            <li>Regional Expansion - Frameworks for successful adjacent market entry</li>
+                            <li>International Growth - Methodologies for cross-border market adaptation</li>
+                            <li>Digital Market Expansion - Approaches for online channel development</li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
+            
+            <!-- Service Area 3 -->
+            <div class="service-area animate-up">
+                <div class="service-area-number">03</div>
+                <h3 class="service-area-title">Business Model Innovation</h3>
+                <p class="service-area-desc">Creating sustainable competitive advantage in dynamic marketplaces</p>
                 
-                <div class="service-card">
-                    <h3 class="service-title">Team Training</h3>
-                    <p>Our team training services equip your staff with the skills and knowledge they need to implement effective brand and growth strategies. We design custom training programs that address your specific needs, whether that's brand management, strategic thinking, or growth marketing.</p>
-                    <p>Our training sessions combine theoretical knowledge with practical exercises, ensuring participants can apply what they've learned immediately. We also provide follow-up resources and coaching to reinforce learning and support ongoing implementation.</p>
+                <div class="service-content">
+                    <div class="service-details animate-up delay-1">
+                        <h3>What we deliver:</h3>
+                        <ul class="service-details-list">
+                            <li>Business model adaptation for changing market conditions</li>
+                            <li>Digital transformation strategies for enhanced competitiveness</li>
+                            <li>Market-specific revenue model optimisation</li>
+                            <li>Service design applying user-centred methodologies</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-details animate-up delay-2">
+                        <h3>Market focus:</h3>
+                        <ul class="service-details-list">
+                            <li>Competitive Differentiation - Identifying unique value proposition opportunities</li>
+                            <li>Adaptive Business Models - Designing flexible systems for market evolution</li>
+                            <li>Strategic Partnerships - Creating ecosystems for enhanced market positioning</li>
+                            <li>Innovation Frameworks - Systematic approaches to continuous business evolution</li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
+            
+            <!-- Service Area 4 -->
+            <div class="service-area animate-up">
+                <div class="service-area-number">04</div>
+                <h3 class="service-area-title">Strategic Capability Development</h3>
+                <p class="service-area-desc">Building your team's ability to implement effective brand-led strategies</p>
                 
-                <div class="service-card">
-                    <h3 class="service-title">Interactive Workshops</h3>
-                    <p>Our interactive workshops bring your team together to tackle specific challenges and generate innovative solutions. Led by experienced facilitators, these structured sessions use proven methodologies to stimulate creative thinking and collaborative problem-solving.</p>
-                    <p>Whether you're developing a new product, refining your brand positioning, or planning your growth strategy, our workshops create a focused environment for productive discussion and decision-making. Each workshop concludes with clear action items and responsibilities.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3 class="service-title">AI Productivity Training</h3>
-                    <p>Our AI productivity training helps your team leverage artificial intelligence as a productivity accelerator. We provide practical guidance on incorporating AI tools into your workflow, with a particular focus on prompt engineering techniques that maximize results.</p>
-                    <p>From content creation and data analysis to customer service and market research, we show you how AI can enhance your capabilities without replacing the human expertise that makes your business unique. Our training includes hands-on practice with the latest AI tools and technologies.</p>
+                <div class="service-content">
+                    <div class="service-details animate-up delay-1">
+                        <h3>What we deliver:</h3>
+                        <ul class="service-details-list">
+                            <li>Framework-based strategic thinking workshops</li>
+                            <li>Cross-functional team alignment methodology</li>
+                            <li>Decision-making tools with quantifiable evaluation criteria</li>
+                            <li>Leadership development for diverse business contexts</li>
+                            <li>Virtual training programmes for distributed teams</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-details animate-up delay-2">
+                        <h3>Delivery locations:</h3>
+                        <ul class="service-details-list">
+                            <li>On-site workshops in Hong Kong and the Greater Bay Area</li>
+                            <li>Virtual training programmes for distributed teams</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="process-section">
+    <!-- Analytical Approach Section -->
+    <section class="approach-section">
+        <div class="section-accent accent-1"></div>
+        <div class="section-accent accent-3"></div>
         <div class="container">
-            <h2 class="section-title">How Our Services <span>Deliver</span></h2>
-            <p class="text-white mb-30">Our consultancy services are designed to create tangible results through a structured, collaborative approach.</p>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <p>All our services begin with a thorough understanding of your business, your market, and your goals. We use proven methodologies to analyze your current situation and identify opportunities for improvement.</p>
-                    <p>Whether you engage us for brand consultancy, strategy development, or growth planning, you'll benefit from our collaborative approach that combines your industry expertise with our strategic insights.</p>
-                    <p>Our training programs and workshops are designed to be practical and immediately applicable, ensuring your team can implement new strategies effectively. We measure success not by the quality of our recommendations, but by the results they generate for your business.</p>
-                </div>
+            <h2 class="section-title animate-up">Our Analytical <span>Approach</span></h2>
+            <div class="approach-content animate-up delay-1">
+                <p>We combine strategic thinking with analytical rigour, applying established business frameworks to every aspect of your growth journey. From brand strategy development to market expansion planning, we integrate your brand's strategic strengths with proven analytical tools to deliver growth strategies that resonate with your target audiences and drive measurable business results.</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
+        <div class="footer-accent footer-accent-1"></div>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
@@ -580,7 +970,7 @@
                     <h4 class="footer-heading">Contact Us</h4>
                     <ul class="footer-links">
                         <li>andy@andmi.cc</li>
-                        <li>London, United Kingdom</li>
+                        <li>Hong Kong SAR, China</li>
                     </ul>
                 </div>
             </div>
@@ -614,33 +1004,24 @@
             });
             
             // Animate elements when they come into view
+            const animateElements = document.querySelectorAll('.animate-up');
+            
             const animateOnScroll = function() {
-                const elements = document.querySelectorAll('.service-card');
-                
-                elements.forEach(element => {
+                animateElements.forEach(element => {
                     const elementPosition = element.getBoundingClientRect().top;
                     const windowHeight = window.innerHeight;
                     
                     if (elementPosition < windowHeight - 100) {
-                        element.style.opacity = 1;
-                        element.style.transform = 'translateY(0)';
+                        element.classList.add('active');
                     }
                 });
             };
-            
-            // Set initial styles for animation
-            const elementsToAnimate = document.querySelectorAll('.service-card');
-            elementsToAnimate.forEach(element => {
-                element.style.opacity = 0;
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
             
             // Run animation on scroll
             window.addEventListener('scroll', animateOnScroll);
             
             // Run once on load
-            animateOnScroll();
+            setTimeout(animateOnScroll, 300);
         });
     </script>
 </body>
